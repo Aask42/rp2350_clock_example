@@ -1,0 +1,3 @@
+[submodule "lib/JJYReceiver"]
+	path = lib/JJYReceiver
+	url = https://github.com/Blue-Crescent/JJYReceiver.git

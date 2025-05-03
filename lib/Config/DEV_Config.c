@@ -172,16 +172,17 @@ UBYTE DEV_Module_Init(void)
     gpio_pull_up(LCD_SDA_PIN);
     gpio_pull_up(LCD_SCL_PIN);
     //#if 0
+    // Set up I2C for RTC
 	i2c_init(i2c0,100*1000);
 	gpio_set_function(I2C_SDA_RTC,GPIO_FUNC_I2C);
 	gpio_set_function(I2C_SCL_RTC,GPIO_FUNC_I2C);
 	gpio_pull_up(I2C_SDA_RTC);
 	gpio_pull_up(I2C_SCL_RTC);
 
-    printf("DS3231 Test Program ...\n\n"); 
+    printf("DS3231 Initialized ...\n\n"); 
     //#endif
     
-    printf("DEV_Module_Init OK \r\n");
+    printf("Clock_Module_Init OK \r\n");
     return 0;
 }
 
