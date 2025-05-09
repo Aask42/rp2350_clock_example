@@ -1,4 +1,4 @@
-﻿#include "radio_ctrl.h"
+#include "radio_ctrl.h"
 #include "LCD_Test.h"
 #include <pico/stdlib.h>
 #include <stdio.h>

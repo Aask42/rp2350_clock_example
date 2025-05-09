@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-static const uint TUNE_POLL_INTERVAL_MS = 5;
-static const uint SEEK_POLL_INTERVAL_MS = 200; // relatively large, to reduce electrical interference from I2C
+static const uint TUNE_POLL_INTERVAL_MS = 10;
+static const uint SEEK_POLL_INTERVAL_MS = 50; // relatively large, to reduce electrical interference from I2C
 
 //
 // misc
@@ -334,6 +334,9 @@ void fm_set_frequency_blocking(rda5807_t *radio, float frequency) {
             printf("Tuning failed\n");
             break;
         }
+        // debug why tuning isn't working and why current code says its tuned when it isnt
+        
+
         if (progress.result == 0) {
             printf("Tuning successful\n");
             break;
@@ -377,6 +380,7 @@ void fm_set_frequency_async(rda5807_t *radio, float frequency) {
 
     frequency = MAX(frequency, radio->frequency_range.bottom);
     frequency = MIN(frequency, radio->frequency_range.top);
+
     uint16_t *regs = radio->regs;
     uint16_t channel = fm_frequency_to_channel(frequency, radio->frequency_range);
     // set channel and start tuning
